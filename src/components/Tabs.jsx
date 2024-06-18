@@ -7,6 +7,7 @@ import Preview from "./Preview";
 export default function Tabs() {
 
     const tabsState = useSelector(state => state.tabs)
+    const previewData = useSelector(state => state.preview)
     const [tabIndex, setTabIndex] = useState(tabsState[0].id)
 
     return (
@@ -18,7 +19,7 @@ export default function Tabs() {
             </div>
             <div className="w-full grow relative">
                 <CodeTab id={tabIndex} code={tabsState.find(obj => obj.id === tabIndex).code} />
-                < Preview />
+                {previewData.preview && <Preview />}                
             </div>
         </div>
     )
